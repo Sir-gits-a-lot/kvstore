@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kvstore
+  namespace: default
+spec:
+  selector:
+    app: kvstore
+  ports:
+  - port: 8010

@@ -4,10 +4,10 @@ metadata:
   name: kvstore-ingress
   namespace: default
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2 # Replace with your Ingress controller class
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
-  - host: kvstore.io # Replace with your desired domain
+  - host: kvstore.io
     http:
       paths:
       - path: /

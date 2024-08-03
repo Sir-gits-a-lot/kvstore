@@ -2,25 +2,27 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kvstore-deployment
-  namespace: default
+  labels:
+    app: kvstore
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kvstore
   template:
     metadata:
-      name: kvstore
       labels:
         app: kvstore
     spec:
       containers:
-        - name: kvstore
-          image: ttl.sh/kvstore:24h
-          imagePullPolicy: IfNotPresent
-          volumeMounts:
-            - name: kvstore-volume
-              mountPath: /go/src/kvstore
-      volumes:
-      - name: kvstore-volume
-        emptyDir:
-  selector: 
-    matchLabels:
-      app: kvstore
-  replicas: 1
+      - name: kvstore
+        image: ttl.sh/kvstore:20h
+        ports:
+        - containerPort: 8010
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+          requests:
+            memory: "64Mi"
+            cpu: "250m"

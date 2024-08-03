@@ -1,7 +1,7 @@
 # kvstore
 kvstore application implemented in Golang with all the Dockerfile and Kubernetes Manifests, can be tested in Kind Cluster
 
-# Commands to reproduce in local kind based environment
+# Steps to reproduce in local kind based environment
 
 1. Create a kind cluster using config file 
 kind create cluster --config kind-cluster.yaml
@@ -17,7 +17,7 @@ kubectl wait --namespace ingress-nginx \
 
 4. Build docker image with tag ttl.sh/kvstore:24h (Useful for pushing to ephemeral registry)
 cd kvstore
-docker build -t ttl.sh/kvstore:24h . --no-cache
+docker build -t ttl.sh/kvstore:20h . --no-cache
 
 5. Apply Kubernetes manifest with the built image
 cd ../kube_manifests
